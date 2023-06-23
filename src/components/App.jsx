@@ -1,37 +1,32 @@
-import React from "react";
-import {Container} from "components/Container/Container"
-
-
-
+import React from 'react';
+import { Container } from 'components/Container/Container';
+import { ContactForm } from 'components/ContactForm/ContactForm.jsx';
+import { Filter } from 'components/Filter/Filter';
+import { ContactList } from 'components/ContactList/ContactList';
 
 export class App extends React.Component {
-    static propTypes = {
-        // тут описуємо пропи
-    }
-    // state = {
-    //     value: this.props.initialValue,
-    // }
-    state = {
-      contacts: [],
-      name: ''
-    }
+  static propTypes = {
+    // тут описуємо пропи
+  };
+  // state = {
+  //     value: this.props.initialValue,
+  // }
+  state = {
+    contacts: [],
+  };
+  formSubmitHandler = data => {
+    console.log(data);
+  };
 
-
-    render() {
-        
-      return (
-        <Container>
-          <input
-              type="text"
-              value={this.state.name}
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-            />
-          
-          </Container>
-            
-        )
-    }
-
+  render() {
+    return (
+      <Container>
+        <h1>Phonebook</h1>
+        <ContactForm onSubmit={this.formSubmitHandler} />
+        <h2>Contacts</h2>
+        <Filter query={this.contacts} />
+        <ContactList />
+      </Container>
+    );
+  }
 }
