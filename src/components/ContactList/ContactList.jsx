@@ -1,13 +1,15 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { ContactItem } from 'components/ContactList/ContactsItem/ContactItem';
 import { nanoid } from 'nanoid';
+import style from 'components/ContactList/ContactList.module.css';
 
 export const ContactList = ({ contacts, removeContact }) => {
   if (contacts)
     return (
-      <ul>
+      <ul className={style.contactList}>
         {contacts.map(contact => (
-          <div key={nanoid(10)}>
+          <div className={style.contactListContainer}>
             <ContactItem
               name={contact.name}
               number={contact.number}
@@ -20,4 +22,9 @@ export const ContactList = ({ contacts, removeContact }) => {
         ))}
       </ul>
     );
+};
+
+ContactList.propTypes = {
+  contacts: PropTypes.object.isRequired,
+  onRemoveContact: PropTypes.func.isRequired,
 };

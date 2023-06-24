@@ -4,6 +4,7 @@ import { Container } from 'components/Container/Container';
 import { ContactForm } from 'components/ContactForm/ContactForm.jsx';
 import { Filter } from 'components/Filter/Filter';
 import { ContactList } from 'components/ContactList/ContactList';
+import style from 'components/Apx.module.css';
 
 export class App extends React.Component {
   static propTypes = {
@@ -55,37 +56,27 @@ export class App extends React.Component {
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
-  // toggleComplited = contactFormId => {
-  //   console.log(contactFormId);
-  //   this.setState(prevState => ({
-  //     contacts: prevState.contacts.map(contact => {
-  //       if (contact.id !== contactFormId)
-  //         return {
-  //           ...contact, this.state
-  //         };
-  //     }),
-  //   }));
-  // };
 
   render() {
     const filteredContacts = this.onFilteredContacts();
     const { filter } = this.state;
     return (
       <Container>
-        <h1>Phonebook</h1>
-        <ContactForm onSubmit={this.formSubmitHandler} />
-        <h2>Contacts</h2>
-        {this.state.contacts.length > 0 ? (
-          <Filter value={filter} onChangeFilter={this.changeFilter} />
-        ) : (
-          alert('Your phonebook is empty. Add first contact!')
-        )}
-        {this.state.contacts.length > 0 && (
-          <ContactList
-            contacts={filteredContacts}
-            removeContact={this.removeContact}
-          />
-        )}
+        <div className={style.container}>
+          <ContactForm onSubmit={this.formSubmitHandler} />
+          <h2>Contacts</h2>
+          {this.state.contacts.length > 0 ? (
+            <Filter value={filter} onChangeFilter={this.changeFilter} />
+          ) : (
+            alert('Your phonebook is empty. Add first contact!')
+          )}
+          {this.state.contacts.length > 0 && (
+            <ContactList
+              contacts={filteredContacts}
+              removeContact={this.removeContact}
+            />
+          )}
+        </div>
       </Container>
     );
   }
