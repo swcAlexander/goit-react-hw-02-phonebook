@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 
-const nameInputId = nanoid();
-
 export class ContactForm extends Component {
   state = {
     name: '',
     number: '',
   };
+
+  nameInputId = nanoid();
+  numberImputId = nanoid();
+  loginInputId = nanoid();
 
   hundleChange = e => {
     const { name, value } = e.currentTarget;
@@ -25,12 +27,12 @@ export class ContactForm extends Component {
   render() {
     return (
       <form onSubmit={this.hundleSubmit}>
-        <label>
+        <label htmlFor={this.nameInputId}>
           Name
           <input
             type="text"
             name="name"
-            id={nameInputId}
+            id={this.nameInputId}
             value={this.state.name}
             onChange={this.hundleChange}
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -38,12 +40,12 @@ export class ContactForm extends Component {
             required
           />
         </label>
-        <label htmlFor="">
+        <label htmlFor={this.numberImputId}>
           Number
           <input
             type="tel"
             name="number"
-            id={nameInputId}
+            id={this.numberInputId}
             value={this.state.number}
             onChange={this.hundleChange}
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

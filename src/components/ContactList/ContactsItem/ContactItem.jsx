@@ -1,8 +1,8 @@
 import React from 'react';
 
-export const ContactItem = ({ id, name, number }) => {
+export const ContactItem = ({ name, number }) => {
   return (
-    <li id={id}>
+    <li>
       <span>{name}</span>
       <span>{number}</span>
     </li>
