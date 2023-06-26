@@ -1,19 +1,21 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { ContactItem } from 'components/ContactList/ContactsItem/ContactItem';
-import { nanoid } from 'nanoid';
 import style from 'components/ContactList/ContactList.module.css';
 
 export const ContactList = ({ contacts, removeContact }) => {
+  
   if (contacts)
     return (
       <ul className={style.contactList}>
         {contacts.map(contact => (
-          <div className={style.contactListContainer}>
+
+          
+          <div className={style.contactListContainer} key={contact.id}>
             <ContactItem
               name={contact.name}
               number={contact.number}
-              key={nanoid(10)}
+              key={contact.id}
             />
             <button type="button" onClick={() => removeContact(contact.id)}>
               Delete
@@ -25,6 +27,10 @@ export const ContactList = ({ contacts, removeContact }) => {
 };
 
 ContactList.propTypes = {
-  contacts: PropTypes.object.isRequired,
-  onRemoveContact: PropTypes.func.isRequired,
+  contacts: PropTypes.arrayOf({
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+  }).isRequired,
+  removeContact: PropTypes.func.isRequired,
 };

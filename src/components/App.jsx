@@ -7,12 +7,6 @@ import { ContactList } from 'components/ContactList/ContactList';
 import style from 'components/Apx.module.css';
 
 export class App extends React.Component {
-  static propTypes = {
-    // тут описуємо пропи
-  };
-  // state = {
-  //     value: this.props.initialValue,
-  // }
   state = {
     contacts: [
       { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },

@@ -1,5 +1,6 @@
 import React from 'react';
 import style from 'components/ContactList/ContactsItem/ContactItem.module.css';
+import Proptypes from 'prop-types';
 
 export const ContactItem = ({ name, number }) => {
   return (
@@ -9,3 +10,8 @@ export const ContactItem = ({ name, number }) => {
     </li>
   );
 };
+
+ContactItem.propTypes = {
+  name: Proptypes.string.isRequired,
+  number: Proptypes.string.isRequired,
+}
