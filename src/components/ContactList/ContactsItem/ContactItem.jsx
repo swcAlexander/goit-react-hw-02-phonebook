@@ -1,6 +1,6 @@
 import React from 'react';
 import style from 'components/ContactList/ContactsItem/ContactItem.module.css';
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export const ContactItem = ({ name, number }) => {
   return (
@@ -12,6 +12,6 @@ export const ContactItem = ({ name, number }) => {
 };
 
 ContactItem.propTypes = {
-  name: Proptypes.string.isRequired,
-  number: Proptypes.string.isRequired,
-}
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+};
